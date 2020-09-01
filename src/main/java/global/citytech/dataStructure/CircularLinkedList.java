@@ -43,14 +43,15 @@ public class CircularLinkedList {
 
         if (index == 0) {
             insertAtStart(data);
-        }
-        Node n = head;
-        for (int i = 0; i < index-1; i++) {
-            n = n.next;
-        }
+        }else{
+            Node n = head;
+            for (int i = 0; i < index-1; i++) {
+                n = n.next;
+            }
 
-        node.next = n.next;
-        n.next = node;
+            node.next = n.next;
+            n.next = node;
+        }
     }
 
     public void removeAtIndex(int index) {

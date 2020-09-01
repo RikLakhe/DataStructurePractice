@@ -4,19 +4,19 @@ package global.citytech.dataStructure;
 public class Runner {
     public static void main(String[] args) {
 
-        LinkedList list = new LinkedList();
-        CircularLinkedList circularList = new CircularLinkedList();
+//        LinkedList list = new LinkedList();
+//        CircularLinkedList circularList = new CircularLinkedList();
 
-        circularList.insert(13);
-        circularList.insert(52);
+//        circularList.insert(13);
+//        circularList.insert(52);
 //        circularList.insertAtStart(11);
 //        circularList.insertAtStart(13);
-        circularList.insert(99);
-        circularList.insertAtIndex(88,2);
+//        circularList.insert(99);
+//        circularList.insertAtIndex(88,2);
 //        circularList.removeAtIndex(1);
-        circularList.show();
-        int n = circularList.getItemAtIndex(2);
-        System.out.println(n);
+//        circularList.show();
+//        int n = circularList.getItemAtIndex(2);
+//        System.out.println(n);
 //        list.insert(52);
 //        list.insert(2);
 //        list.insert(74);

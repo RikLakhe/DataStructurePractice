@@ -57,6 +57,18 @@ public class LinkedListTest {
     }
 
     @Test
+    public void doInsertAtIndexZeroLinkedListTesting() {
+        LinkedList list = new LinkedList();
+        list.insert(33);
+        list.insert(5);
+        list.insert(54);
+        list.insert(46);
+        list.insertAtIndex(11,0);
+        int result = list.getItemAtIndex(2);
+        assertEquals(5,result);
+    }
+
+    @Test
     public void doRemoveAtIndexLinkedListTesting() {
         LinkedList list = new LinkedList();
         list.insert(33);
@@ -64,6 +76,18 @@ public class LinkedListTest {
         list.insert(54);
         list.insert(46);
         list.removeAtIndex(2);
+        int result = list.getItemAtIndex(2);
+        assertEquals(46,result);
+    }
+
+    @Test
+    public void doRemoveAtIndexZeroLinkedListTesting() {
+        LinkedList list = new LinkedList();
+        list.insert(33);
+        list.insert(5);
+        list.insert(54);
+        list.insert(46);
+        list.removeAtIndex(0);
         int result = list.getItemAtIndex(2);
         assertEquals(46,result);
     }
@@ -80,6 +104,20 @@ public class LinkedListTest {
             int result = list.getItemAtIndex(3);
         }catch (ArrayIndexOutOfBoundsException err){
             String message = "There is no data in given index!";
+            assertEquals(message, err.getMessage());
+            throw err;
+        }
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void doPopHeadLinkedListTesting() {
+        LinkedList list = new LinkedList();
+        list.insert(46);
+        list.pop();
+        try{
+            int result = list.getItemAtIndex(3);
+        }catch (ArrayIndexOutOfBoundsException err){
+            String message = "There is no data!";
             assertEquals(message, err.getMessage());
             throw err;
         }
