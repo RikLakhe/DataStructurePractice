@@ -3,6 +3,10 @@ package global.citytech.dataStructure;
 public class CircularLinkedList {
     private Node head;
 
+    public void initialTesting(){
+        throw new IllegalArgumentException("Testing connected");
+    }
+
     public void insert(int data) {
         Node node = new Node();
         node.data = data;
@@ -15,9 +19,7 @@ public class CircularLinkedList {
                 n = n.next;
             }
             n.next = node;
-
         }
-
         node.next = head;
     }
 
@@ -43,7 +45,7 @@ public class CircularLinkedList {
             insertAtStart(data);
         }
         Node n = head;
-        for (int i = 0; i < index-2; i++) {
+        for (int i = 0; i < index-1; i++) {
             n = n.next;
         }
 
@@ -63,12 +65,12 @@ public class CircularLinkedList {
 
         } else {
             Node n = head;
-            Node n1 = null;
+            Node n1;
             for (int i = 0; i < index - 1; i++) {
                 n = n.next;
             }
             n1 = n.next;
-            n.next = n1;
+            n.next = n1.next;
         }
     }
 
@@ -82,6 +84,18 @@ public class CircularLinkedList {
                 node = node.next;
             }
             System.out.println(node.data);
+        }
+    }
+
+    public int getItemAtIndex(int index) {
+        Node n = head;
+        if(n==null){
+            throw new ArrayIndexOutOfBoundsException("There is no data!");
+        }else{
+            for (int i = 0; i < index; i++) {
+                    n = n.next;
+            }
+            return n.data;
         }
     }
 }
