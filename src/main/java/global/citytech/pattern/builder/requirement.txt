@@ -1,0 +1,11 @@
+Part 1:
+The given classes and interface are components of the Builder pattern.
+GeekDirector creates geek-admin using the GeekBuilder class.
+Implement the GeekBuilder method to compile the program and output the created geek.
+
+Part 2:
+
+GeekDirector must provide the following geeks :
+Admin with 10 years of experience and knowledge of PowerShell and Perl;
+Backend with 5 years of experience and knowledge of Python and PHP;
+Rockstar with 20 years of experience and knowledge of Java, Kotlin, Scala languages and Angular framework.

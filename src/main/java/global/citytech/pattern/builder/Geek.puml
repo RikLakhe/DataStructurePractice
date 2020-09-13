@@ -1,0 +1,50 @@
+@startuml
+
+class Geek{
+    - String type
+    - List languages
+    - int experience
+    --Constructor--
+    + Geek(String, List, Int)
+    --Override--
+    + String toString()
+}
+
+interface Builder{
+    + void setType(String)
+    + void setLanguages(List)
+    + void setExperience(Int)
+}
+
+class GeekBuilder implements Builder{
+    - String type
+    - List languages
+    - int experience
+    --setter--
+    + void setType(String)
+    + void setLanguages(List)
+    + void setExperience(int)
+    --getter--
+    + Geek getResult()
+}
+
+GeekBuilder --> Geek
+
+class GeekDirector{
++ void buildAdmin(Builder);
++ void buildRockstar(Builder);
++ void buildBackend(Builder);
+}
+
+GeekDirector --> Builder
+
+class TestDrive{
+    - GeekDirector director
+    - GeekBuilder builder
+    - Geek geek
+}
+
+TestDrive ..> GeekDirector : create
+TestDrive ..> Geek
+
+@enduml
