@@ -11,27 +11,27 @@ public class CaeserCipherTest {
         cs.initialTesting();
     }
 
-    @Test(expected = NullPointerException.class)
-    public void doGetShiftedStringTesting() {
-        cs.getShiftedString();
-    }
-
-    @Test
-    public void doEncryptionAfterShiftTesting() {
-        cs.shiftAlphaByIndex(19);
-        String testShiftString = cs.getShiftedString();
-        assertEquals("TUVWXYZABCDEFGHIJKLMNOPQRS",testShiftString);
-    }
-
     @Test
     public void doEncryptionTesting() {
-        String testEncrypted = cs.encrypt("I AM BAT",19);
-        assertEquals("B TF UTM",testEncrypted);
+        String testEncrypted = cs.encrypt("I am BAT",19);
+        assertEquals("B tf UTM",testEncrypted);
     }
 
     @Test
     public void doDecryptionTesting() {
         String testDecrypted = cs.decrypt("B TF UTM",19);
         assertEquals("I AM BAT",testDecrypted);
+    }
+
+    @Test
+    public void doEncryption2Testing() {
+        String testEncrypted = cs.encrypt2("First Legion",23,17);
+        assertEquals("Czojq Ivdzle",testEncrypted);
+    }
+
+    @Test
+    public void doDecryption2Testing() {
+        String testEncrypted = cs.decrypt2("Czojq Ivdzle",23,17);
+        assertEquals("First Legion",testEncrypted);
     }
 }
