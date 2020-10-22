@@ -1,5 +1,23 @@
 package global.citytech.caeserCipher;
 
+class Answers {
+    private String answer;
+    private int key;
+
+    public Answers(String encryptDecrypt, int key) {
+        this.answer = encryptDecrypt;
+        this.key = key;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public int getKey() {
+        return key;
+    }
+}
+
 public class CaeserCipher {
     public void initialTesting() {
         throw new IllegalArgumentException("Testing connected");
@@ -8,6 +26,8 @@ public class CaeserCipher {
     private final String alphaString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private String shiftedFirstString;
     private String shiftedSecondString;
+    private String firstString;
+    private String secondString;
 
     public CaeserCipher() {
     }
@@ -109,6 +129,40 @@ public class CaeserCipher {
         return encryptedString.toString();
     }
 
+    private int[] countLetters(String inputString) {
+        int[] letterCount = new int[26];
+        for (int k = 0; k < inputString.length(); k++) {
+            int alphaStringIndex = alphaString.indexOf(inputString.toUpperCase().charAt(k));
+            if (alphaStringIndex != -1) {
+                letterCount[alphaStringIndex] += 1;
+            }
+        }
+        return letterCount;
+    }
+
+    private int findMaxIndex(int[] letterArray) {
+        int maxIndex = 0;
+        int maxCount = 0;
+        for (int k = 0; k < letterArray.length; k++) {
+            if (letterArray[k] > maxCount) {
+                maxCount = letterArray[k];
+                maxIndex = k;
+            }
+        }
+        return maxIndex;
+    }
+
+    public Answers decrypt(String inputString) {
+        int[] freq = countLetters(inputString);
+        int maxIndex = findMaxIndex(freq);
+        int dKey = maxIndex - 4;
+        if (maxIndex < 4) {
+            dKey = 26 - (4 - maxIndex);
+        }
+        Answers ans = new Answers(encrypt(inputString, 26 - dKey), 26 - dKey);
+        return ans;
+    }
+
     public String decrypt(String inputString, int shiftIndex) {
         shiftAlphaBySingleIndex(shiftIndex);
         StringBuilder decryptedString = new StringBuilder();
@@ -116,6 +170,25 @@ public class CaeserCipher {
             decryptedString.append(getFirstAlphaString(inputString.toUpperCase().charAt(k)));
         }
         return decryptedString.toString();
+    }
+
+    public String decrypt2(String inputString) {
+        StringBuilder encryptedFirst = new StringBuilder();
+        StringBuilder encryptedSecond = new StringBuilder();
+        for (int k = 0; k < inputString.length(); k++) {
+            char inputCharacter = inputString.toUpperCase().charAt(k);
+            if (k % 2 == 0) {
+                encryptedFirst.append(inputCharacter);
+            } else {
+                encryptedSecond.append(inputCharacter);
+            }
+        }
+        this.firstString = encryptedFirst.toString();
+        this.secondString = encryptedSecond.toString();
+        Answers a1 = decrypt(this.firstString);
+        Answers a2 = decrypt(this.secondString);
+        System.out.println(a1.getKey()+"   "+a2.getKey());
+        return encrypt2(inputString, a1.getKey(), a2.getKey());
     }
 
     public String decrypt2(String inputString, int shiftIndex1, int shiftIndex2) {
