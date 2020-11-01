@@ -14,7 +14,7 @@ public class TestDrive {
     public static void main(String[] args) throws IOException {
         WordCounter wc = new WordCounter();
 
-        File file = new File("src/main/resources/randomStory/likeit.txt");
+        File file = new File("src/main/resources/crypto/errors.txt");
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -24,7 +24,8 @@ public class TestDrive {
             }
 
 //            wc.printWordsWithFrequency();
-            wc.printCharactersFrequency();
+//            wc.printCharactersFrequency();
+            wc.charactersWithNumParts(10,15);
         } catch (IOException e) {
             e.printStackTrace();
         }
