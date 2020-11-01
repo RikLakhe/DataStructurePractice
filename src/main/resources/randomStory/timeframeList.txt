@@ -1,0 +1,6 @@
+morning
+evening
+night
+day
+month
+year

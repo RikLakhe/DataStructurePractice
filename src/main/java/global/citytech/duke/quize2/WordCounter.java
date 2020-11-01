@@ -2,6 +2,7 @@ package global.citytech.duke.quize2;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
@@ -82,5 +83,17 @@ public class WordCounter {
     private int maxIndex() {
         int highestFreq = Collections.max(freqArrayList);
         return freqArrayList.indexOf(highestFreq);
+    }
+
+    public void charactersWithNumParts(int num1, int num2) {
+        HashMap<String, Integer> temp = new HashMap<String, Integer>();
+
+        for (int k = 0; k < freqCharactersArrayList.size(); k++) {
+            if (freqCharactersArrayList.get(k) >= num1 && freqCharactersArrayList.get(k) <= num2) {
+                temp.put(charactersArrayList.get(k), freqCharactersArrayList.get(k));
+            }
+        }
+
+        temp.forEach((key, value) -> System.out.println(key + " " + value));
     }
 }
